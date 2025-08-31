@@ -44,7 +44,7 @@ function Table<T extends { id: number | string }>({
                 <tbody>
                     {data.length > 0 ? (
                         data.slice(baseIndex, currentPage * pageSize).map((row) => (
-                            <tr key={String(row.id)}>
+                            <tr key={String(row.id)} className='hover:bg-gray-700 dark:hover:bg-gray-800'>
                                 {columns.map((col) => (
                                     <td key={String(col.key)} style={cellStyle}>
                                         {String(row[col.key])}
@@ -64,7 +64,7 @@ function Table<T extends { id: number | string }>({
             </table>
 
             {/* Pagination */}
-            <div className="sticky bottom-0 bg-white border-t p-2 flex justify-between items-center">
+            <div className="sticky bottom-0 bg-white border-t p-2 flex gap-2 items-center justify-center">
                 <Button
                     onClick={() => onPageChange(currentPage - 1)}
                     disabled={currentPage === 1}
@@ -76,14 +76,14 @@ function Table<T extends { id: number | string }>({
                         <button
                             key={page}
                             onClick={() => onPageChange(page)}
-                            className='bg-gray-200 p-2 py-0 rounded text-gray-900 border border-gray-200'
+                            className='bg-gray-200 p-2 py-0.5 rounded text-gray-900 border border-gray-200'
                             style={{
                                 fontWeight: currentPage === page ? 'bold' : 'normal',
                             }}
                         >
                             {page}
                         </button>
-                    ) : <span key={page} className='bg-blue-900 p-2 py-0 rounded text-white'>{page}</span>
+                    ) : <span key={page} className='bg-blue-900 p-2 py-0.5 rounded text-white'>{page}</span>
                     )
                 })}
                 <Button

@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import usePosts from '../../Hooks/usePosts';
 import type { IPost } from '../../model/PostModel';
 import { Input } from '../../components/ui/Input';
@@ -15,7 +15,13 @@ export default function Posts() {
     const [selectedPost, setSelectedPost] = useState<IPost | null>(null);
 
     const [posts, isLoading, error, setSearch, updatePost] = usePosts();
-
+    useEffect(() => {
+        if(posts){
+            console.log(posts.length);
+        }
+      
+    }, [posts])
+    
     const handleSave = useCallback((data: IPost) => {
         if (selectedPost) {
             updatePost(selectedPost.id, data);
@@ -86,7 +92,7 @@ export default function Posts() {
                             currentPage={page}
                             onPageChange={setPage}
                             pageSize={10}
-                            totalItems={100}
+                            totalItems={posts.length}
                             renderActions={(post: IPost) => (
                                 <div className="flex gap-2">
                                     <Button onClick={() => { setSelectedPost(post); setIsModalOpen(true); }} variant='rose'>
