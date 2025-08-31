@@ -12,7 +12,7 @@ export const useThemeStore = create<ThemeState>()(
         set({ theme: get().theme === "light" ? "dark" : "light" }),
     }),
     {
-      name: "theme-storage", // key in localStorage
+      name: "theme-storage",
     }
   )
 );

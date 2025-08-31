@@ -7,7 +7,6 @@ import { useForm, type SubmitHandler } from 'react-hook-form';
 
 
 export default function EditPost({ selectedPost, handleSave, handleClose }: IEditPost) {
-    console.log("EditPost Rendered");
     const {
         register,
         handleSubmit,

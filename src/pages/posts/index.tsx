@@ -15,12 +15,6 @@ export default function Posts() {
     const [selectedPost, setSelectedPost] = useState<IPost | null>(null);
 
     const [posts, isLoading, error, setSearch, updatePost] = usePosts();
-    useEffect(() => {
-        if(posts){
-            console.log(posts.length);
-        }
-      
-    }, [posts])
     
     const handleSave = useCallback((data: IPost) => {
         if (selectedPost) {

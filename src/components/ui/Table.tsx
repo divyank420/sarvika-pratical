@@ -1,4 +1,3 @@
-// components/Table.tsx
 import React from 'react';
 import { Button } from './Button';
 
@@ -44,13 +43,13 @@ function Table<T extends { id: number | string }>({
                 <tbody>
                     {data.length > 0 ? (
                         data.slice(baseIndex, currentPage * pageSize).map((row) => (
-                            <tr key={String(row.id)} className='hover:bg-gray-700 dark:hover:bg-gray-800'>
+                            <tr key={String(row.id)} className='hover:bg-gray-700 dark:hover:bg-gray-800 text-center'>
                                 {columns.map((col) => (
-                                    <td key={String(col.key)} style={cellStyle}>
+                                    <td key={String(col.key)}>
                                         {String(row[col.key])}
                                     </td>
                                 ))}
-                                {renderActions && <td style={cellStyle}>{renderActions(row)}</td>}
+                                {renderActions && <td >{renderActions(row)}</td>}
                             </tr>
                         ))
                     ) : (
@@ -96,9 +95,5 @@ function Table<T extends { id: number | string }>({
 }
 
 
-const cellStyle: React.CSSProperties = {
-    padding: '10px',
-    borderBottom: '1px solid #eee',
-};
 
 export default Table;
